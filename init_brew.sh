@@ -22,7 +22,7 @@ function install_brew() {
     echo 'export PATH=$HOME/goinfre/brew/bin:$PATH' >> $HOME/.zshrc
     echo 'export HOMEBREW_CASK_OPTS="--appdir=$HOME/goinfre/Applications"' >> $HOME/.zshrc
     source $HOME/.zshrc
-    brew update
+    #brew update
     touch "$FLAG"
     
     rm -rf $HOME/Applications/CLion.app
