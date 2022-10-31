@@ -15,10 +15,10 @@ function install_brew() {
 	#rm -rf ~/Library/Application\ Support/Code/User/worksapceStorage/
 
     git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/brew
-	cd brew
+	cd $HOME/goingre/brew
 	git fetch origin 3.5.10
 	git reset --hard c5731faf8be1ddc1eeae4b162b88bd76318fc279
-	cd ../
+	cd -
     echo 'export PATH=$HOME/goinfre/brew/bin:$PATH' >> $HOME/.zshrc
     echo 'export HOMEBREW_CASK_OPTS="--appdir=$HOME/goinfre/Applications"' >> $HOME/.zshrc
     source $HOME/.zshrc
