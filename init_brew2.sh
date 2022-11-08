@@ -30,7 +30,7 @@ function fclean() {
 
 if [ "$BREW_EXIST" -eq 127 ]; then
 	if [[ ! "$PATH" =~ "$HOME/goinfre/brew/bin" ]]; then
-		"export PATH=\$HOME/goinfre/brew/bin:\$PATH" >> $HOME/.zshrc
+		echo "export PATH=\$HOME/goinfre/brew/bin:\$PATH" >> $HOME/.zshrc
 		export PATH="$PATH:$HOME/goinfre/brew/bin"
 	fi
 	#if [ -z "$CASK_ENV_FLAG" ]; then
