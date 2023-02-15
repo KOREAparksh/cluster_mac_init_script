@@ -43,7 +43,6 @@ if [ "$BREW_EXIST" -eq 127 ]; then
 	git fetch origin 3.5.10
 	git reset --hard c5731faf8be1ddc1eeae4b162b88bd76318fc279
 	cd -
-	brew update
 	brew install ncdu
 	brew install lsd
 	brew install bat
