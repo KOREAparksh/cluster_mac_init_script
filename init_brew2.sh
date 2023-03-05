@@ -46,6 +46,7 @@ if [ "$BREW_EXIST" -eq 127 ]; then
 	brew install ncdu
 	brew install lsd
 	brew install bat
+	brew install nvm
 	brew install --cask clion
 	ln -s "$HOME/goinfre/Applications/CLion.app" "$HOME/Applications/CLion.app"
 	rm -rf ~/Library/Caches/JetBrains/CLion2022.1/caches/*
