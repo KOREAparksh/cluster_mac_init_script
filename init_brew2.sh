@@ -28,6 +28,13 @@ function fclean() {
 	echo "fclean"
 }
 
+function js() {
+	brew install nvm
+	nvm install --lts
+	npm install -g yarn
+	npm i -g @nestjs/cli
+}
+
 if [ "$BREW_EXIST" -eq 127 ]; then
 	if [[ ! "$PATH" =~ "$HOME/goinfre/brew/bin" ]]; then
 		echo "export PATH=\$HOME/goinfre/brew/bin:\$PATH" >> $HOME/.zshrc
@@ -46,10 +53,6 @@ if [ "$BREW_EXIST" -eq 127 ]; then
 	brew install ncdu
 	brew install lsd
 	brew install bat
-	brew install nvm
-	nvm install --lts
-	npm install -g yarn
-	npm i -g @nestjs/cli
 	brew install --cask clion
 	ln -s "$HOME/goinfre/Applications/CLion.app" "$HOME/Applications/CLion.app"
 	rm -rf ~/Library/Caches/JetBrains/CLion2022.1/caches/*
@@ -59,6 +62,8 @@ fi
 
 if [ "$ARG" == "java" ]; then
 	java
+elif [ "$ARG" == "js" ]; then
+	js
 elif [ "$ARG" == "clean" ]; then
 	clean
 elif [ "$ARG" == "fclean" ]; then
