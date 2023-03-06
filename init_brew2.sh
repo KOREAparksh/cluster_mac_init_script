@@ -29,6 +29,9 @@ function fclean() {
 }
 
 function js() {
+	rm -rf ~/.nvm
+	rm -rf ~/.npm
+	mkdir -p ~/.nvm
 	brew install nvm
 	nvm install --lts
 	npm install -g yarn
