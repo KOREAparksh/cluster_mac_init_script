@@ -3,6 +3,17 @@ CASK_ENV_FLAG=${HOMEBREW_CASK_OPTS}
 JAVA_ENV_FLAG=${JAVA_HOME}
 ARG=$1
 
+rm -rf ~/Library/Caches/vscode-cpptools/*
+rm -rf ~/Library/Caches/com.google.SoftwareUpdate
+rm -rf ~/Liibrary/Application\ Support/Slack/Service/Service\ Worker/*
+rm -rf ~/Liibrary/Application\ Support/Slack/Service\ Worker/*
+rm -rf ~/Library/Application\ Support/Slack/Cache/*
+rm -rf ~/Library/Application\ Support/Code/User/worksapceStorage/
+
+mkdir -p "$HOME/goinfre/Applications"
+
+export HOMEBREW_CASK_OPTS="--appdir=$HOME/goinfre/Applications"
+
 function java() {
 	if [ -z "$JAVA_ENV_FLAG" ]; then
 		"export JAVA_HOME=\"\$HOME/goinfre/amazon-corretto-17.jdk/Contents/Home\"" >> $HOME/.zshrc
@@ -31,11 +42,23 @@ function fclean() {
 function js() {
 	rm -rf ~/.nvm
 	rm -rf ~/.npm
-	mkdir -p ~/.nvm
+	sleep 5
 	brew install nvm
+	sleep 5
+	mkdir ~/.nvm
+	sleep 5
 	nvm install --lts
+	sleep 5
 	npm install -g yarn
+	sleep 5
 	npm i -g @nestjs/cli
+	sleep 5
+	brew install postgresql
+	sleep 5
+	yarn add pg typeorm @nestjs/typeorm --save
+	#pg : nestJS 와 postgresql을 연동할 수 있는 모듈. mysql npm 모듈과 비슷.
+	#typeorm 
+	#@nestjs/typeorm 
 }
 
 if [ "$BREW_EXIST" -eq 127 ]; then
@@ -44,8 +67,8 @@ if [ "$BREW_EXIST" -eq 127 ]; then
 		export PATH="$PATH:$HOME/goinfre/brew/bin"
 	fi
 	#if [ -z "$CASK_ENV_FLAG" ]; then
-	#	"export HOMEBREW_CASK_OPTS=\"--appdir=\$HOME/goinfre/Applications\"" >> $HOME/.zshrc
-	#	export HOMEBREW_CASK_OPTS="--appdir=$HOME/goinfre/Applications"
+		# "export HOMEBREW_CASK_OPTS=\"--appdir=\$HOME/goinfre/Applications\"" >> $HOME/.zshrc
+		# export HOMEBREW_CASK_OPTS="--appdir=$HOME/goinfre/Applications"
 	#fi
 	git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/brew
 	
@@ -53,11 +76,11 @@ if [ "$BREW_EXIST" -eq 127 ]; then
 	git fetch origin 3.5.10
 	git reset --hard c5731faf8be1ddc1eeae4b162b88bd76318fc279
 	cd -
-	brew install ncdu
-	brew install lsd
+	brew update
 	brew install bat
 	brew install --cask clion
 	ln -s "$HOME/goinfre/Applications/CLion.app" "$HOME/Applications/CLion.app"
+	#brew install lsd
 	rm -rf ~/Library/Caches/JetBrains/CLion2022.1/caches/*
 	rm -rf ~/Library/Caches/JetBrains/CLion2022.2/caches/*
 	rm -rf ~/Library/Caches/Homebrew/downloads/*
